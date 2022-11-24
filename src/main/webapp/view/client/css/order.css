@@ -1,0 +1,153 @@
+.order{
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+}
+.order-left{
+    width: 55%;
+}
+.order-right{
+    width: 40%;
+}
+.have-account{
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    color: #333;
+    width: 100%;
+}
+.login{
+    text-decoration: none;
+    color: #333;
+}
+.order-form{
+    border-top: 2px solid #ddd;
+    padding: 20px 0;
+}
+.order-form-group.small{
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+.title{
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+.order-form__heading, .order-info__heading{
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.form-group-small{
+    width: 100%;
+}
+.form-group-small > input, .order-form-group > input {
+    width: 100%;
+    padding: 8px 6px;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    margin: 10px 0;
+    box-shadow: 1px 0 1px #ccc;
+   
+}
+.form-group-small > input:focus, .order-form-group > input:focus{
+    box-shadow: 0 0 5px #ccc;
+} 
+#ghichu{
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    margin: 10px 0;
+    box-shadow: 1px 0 1px #ccc;
+    width: 100%;
+    outline: none;
+}
+#ghichu:focus{
+    box-shadow: 0 0 5px #ccc;
+}
+.order-info{
+    padding-top: 80px;
+}
+.order__row{
+    display: flex;
+    justify-content: space-between;
+}
+.order__row + .order__row{
+    margin: 40px 0;
+}
+.order__row > span {
+    font-size: 1.6rem;
+}
+.order__row{
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+.order__row:last-child{
+    border-bottom: 2px solid #ddd;
+}
+.order__row:nth-child(2){
+    border-bottom: 2px solid #ddd;
+}
+.bold{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.upper{
+    text-transform: uppercase;
+}
+.order__product-name{
+    font-size: 1.5rem;
+    color: rgb(133, 123, 123);
+}
+.order__product-quantity{
+    margin-left: 2px;
+}
+.order-info-wrapper{
+    border: 2px solid #c89979;;
+    padding: 2rem 2rem;
+}
+
+.order-info-wrapper.ordered{
+    border: none;
+}
+.order-info.ordered{
+    padding-top: 4rem;
+}
+.order__row.ordered + .order__row.ordered {
+    margin: 20px 0;
+}
+.order__row.ordered .order__product {
+    padding-bottom: 0;
+}
+.ordered:nth-child(3){
+    margin: 6px 0;
+}
+.ordered-thank{
+    padding-top: 6rem;
+}
+.thank__wrapper{
+    background-color: rgb(248 244 244);
+    padding: 2rem;
+    border-radius: 3px;
+    box-shadow: 0 2px 2px 1px #ddd;
+}
+.thank__heading{
+    font-size: 1.8rem;
+    text-transform: normal;
+    color: #5cb85c;
+    font-weight: 600;
+}
+.thank__list{
+    margin-top: 2rem;
+    margin-left: 5rem;
+}
+.thank__item{
+    padding: 7px 0;
+    color: #333;
+    font-size: 1.6rem;
+}
+.thank__item > span {
+    font-weight: bold;
+}

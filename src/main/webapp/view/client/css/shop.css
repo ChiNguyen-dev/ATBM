@@ -1,0 +1,133 @@
+@charset "ISO-8859-1";
+.page__title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+.breadcrumb{
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+.home__link{
+    text-decoration: none;
+    color: rgba(102,102,102,0.7);
+}
+.current__page{
+    color: #333;
+    font-weight: bold;
+}
+.page__sort{
+    font-size: 1.6rem;
+    color: #333;
+}
+.sory__by{
+    padding: 8px 8px;
+    min-width: 270px;
+    box-shadow: inset 0 -1.4em 1em 0 rgb(0 0 0 / 2%);
+    border: 1px solid #ddd;
+    outline: none;
+    font-size: 1.6rem;
+}
+.products__wrapper{
+    display: flex;
+    justify-content: space-between;  
+    gap: 2rem; 
+}
+.products__rigtside{
+    width: 80%;
+}
+.products__leftside{
+    width: 20%;
+    margin-top: 20px;
+}
+.category-box{
+    overflow: hidden;
+}
+.category__link{
+    display: block;
+    width: 80%;
+    cursor:pointer;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.6rem;
+    padding: 10px 0;
+    margin: 0 20px;
+    border-bottom: 1px solid rgb(238, 233, 233);
+}
+.category__link:hover{
+    color: #c89979;
+}
+.category__link:nth-child(1){
+    margin-top: 16px;
+}
+.category__link:last-child{
+    margin-bottom: 16px;
+    border-bottom: none;
+}
+.category-box, .best-seller-box{
+    margin-bottom: 20px;
+}
+.best-seller__item{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(245, 243, 243);
+}
+.best-seller__item:last-child{
+    border-bottom: none;
+}
+.best-seller-box__wrapper{
+    margin: 5px 12px;
+}
+.img__link{
+    display: block;
+    width: 30%;
+}
+.img__link > img{
+    width: 100%;
+    object-fit: cover;
+}
+.item__name{
+    font-size: 1.6rem;
+    display: block;
+    color: #333;
+    margin: 6px 0 12px 0;
+}
+.item__price{
+    font-size: 1.6rem;
+    display: block;
+    color: #333;
+}
+.product-wrap{
+    flex-wrap: wrap;
+}
+.pagingation{
+    margin: 60px 0;
+    text-align: center;
+}
+.pagination__wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+}
+.page__item,.next-page,.prev-page{
+    padding: 10px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    display: block;
+}
+.page-active{
+    background-color: #c89979;
+    color: #fff;
+}
+.item__name__link{
+	text-decoration: none;
+}
+.page__item:hover ,.next-page:hover,.prev-page:hover{
+    background-color: #c89979;
+    color: #fff;
+}

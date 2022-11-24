@@ -1,0 +1,114 @@
+.single-product{
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+    gap: 40px;
+
+}
+.col-2:nth-child(1){
+    width: 40%;
+}
+.col-2:nth-child(2){
+    width: 60%;
+}
+#main-img{
+    height: 450px;
+    width: 100%;
+    cursor: pointer;
+}
+.small-img-row{
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.samll-img-col{
+    flex-basis: 24%;
+    object-fit: contain;
+}
+.samll-img-col > img{
+    max-width: 100%;
+}
+.brcum {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: normal;
+    color: rgba(102,102,102,0.7);
+}
+.brcum a {
+    color: rgba(102,102,102,0.7);
+    text-decoration: none;
+}
+.single-product-name{
+    font-size: 2.5rem;
+    margin: 30px 0;
+    position: relative;
+}
+.single-product-name::after{
+    content: "";
+    height: 2px;
+    width: 8%;
+    position: absolute;
+    top: 120%;
+    left: 0;
+    background-color: gainsboro;
+}
+.single-product-desc{
+    font-size: 1.6rem;
+    text-align: justify;
+  text-justify: inter-word;
+    margin-bottom: 40px;
+}
+.details{
+    font-size: 1.6rem;
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
+.details li {
+    margin-bottom: 10px;
+}
+.btn.btn--add{
+    display: inline-block;
+    padding: 8px 16px;
+    background-color:#c89979;
+    margin-left: 20px;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    color: #fff;
+    border: 1px solid rgb(248 68 68);
+}
+.btn.btn--add:hover{
+	background-color: #8d6951;
+}
+.single-product-id{
+    margin-top: 20px;
+    font-size: 1.6rem;
+}
+.single-product-price span{
+    display: block;
+    font-weight: normal;
+    font-size: 2rem;
+    color: #333;
+    text-decoration: line-through;
+}
+.single-product-price{
+    font-size: 2.5rem;
+    color: #c89979;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.product__item.single-product-slider-content {
+    max-width: 100%;
+}
+.same-product-heading{
+    text-align: center;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+.minus.detail, .add.detail{
+	padding: 11.5px 6px;
+}
+.quantity.detail{
+	font-size: 1.55rem;
+}

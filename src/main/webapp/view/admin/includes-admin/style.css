@@ -1,0 +1,1345 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+*
+{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+:root
+{
+    --main: #333;
+    --white: #fff;
+    --grey: #f5f5f5;
+    --black: #222;
+    --black2: #999;
+}
+body
+{
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+/*menu*/
+.container
+{
+    position: relative;
+    width: 100%;
+
+}
+.navigation
+{
+    position:fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--main);
+    border-left: 10px solid var(--main);
+    transition: 0.5s;
+    overflow:hidden;    
+}
+.navigation.active
+{
+    width: 80px;
+}
+.navigation ul
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.navigation ul li
+{
+    position: relative;
+    width:100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+.navigation ul li:hover,
+.navigation ul li.hovered
+{
+    background: var(--white);
+}
+.navigation ul li:nth-child(1)
+{
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+.navigation ul li a
+{
+    position: relative;
+    display:block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+}
+.navigation ul li:hover a,
+.navigation ul li.hovered a
+{
+    color: var(--main);
+}
+.navigation ul li a .icon
+{
+    position: relative;
+    display:block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 70px;
+    text-align: center;
+}
+.navigation ul li a .icon ion-icon
+{
+    font-size: 1.75em;
+}
+.navigation ul li a .title
+{
+    position: relative;
+    display:block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+/*end menu*/
+
+/*curve ousite*/
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before
+{
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--white);
+    pointer-events: none;
+}
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after
+{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--white);
+    pointer-events: none;
+}
+/* end curve ousite*/
+/*main*/
+.main
+{
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: var(--white);
+    transition: 0.5s;
+}
+.main.active
+{
+    width: calc(100% - 80px);
+    left: 80px;
+}
+.topbar
+{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 10px;
+
+}
+.toggle
+{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    font-size: 2.5em;
+    cursor: pointer;
+}
+.toggle ion-icon
+{
+    color: var(--main)
+}
+.search
+{
+    position: relative;
+    width: 400px;
+    margin: 0 10px;
+}
+.search label
+{
+    position: relative;
+    width: 100%;
+}
+.search label input
+{
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    outline: none;
+    font-size: 18px;
+    border: 1.5px solid var(--main); 
+}
+.search label ion-icon
+{
+    position:absolute;
+    top:10px;
+    left: 10px;
+    font-size: 1.2em;
+    color: var(--main);
+}
+.user
+{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius:50%;
+    overflow:hidden;
+    cursor: pointer;
+}
+.user img
+{
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;         
+}
+.cardBox
+{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr) ;
+    grid-gap: 30px;
+}
+.cardBox .card
+{
+    position: relative;
+    background: var(--white);
+    padding: 30px;
+    border-radius:20px;
+    display:flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+.cardBox .card .numbers
+{
+    position: relative;
+    font-weight: 500;
+    font-size: 2.5em;
+    color: var(--main);
+}
+.cardBox .card .cardName
+{
+    color: var(--black2);
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+.cardBox .card .iconBox
+{
+    font-size: 2.5em;
+    color: var(--black2)
+}
+.cardBox .card:hover
+{
+    background: var(--main);
+}
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .iconBox
+{
+    color: var(--white);
+}
+.details
+{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 30px;
+    margin-top: 10px;
+}
+.details .recentOrder
+{
+    position: relative;
+    width: 100%;
+    display: grid;
+    min-height: 370px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+.cardHeader
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.cardHeader h2
+{
+    font-weight: 600;
+    color: var(--main);
+}
+.btn 
+{
+    position: relative;
+    padding: 5px 10px;
+    background: var(--main);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+}
+.viewDetails
+{
+    text-decoration: none;
+    color: #695faa;
+    font-weight: 500;
+}
+.details table
+{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+
+}
+.details table thead td
+{
+    font-weight: 600;
+}
+.details .recentOrder table tr
+{
+    color: var(--black);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.details .recentOrder table tr:last-child
+{
+    border-bottom: none;
+}
+.details .recentOrder table tbody tr:hover
+{
+    background: #FFEEAD;
+    color: var(--black);
+}
+.details .recentOrder table tr td
+{
+    padding: 15px;
+}
+.details .recentOrder table tr td:last-child
+{
+    text-align: end;
+
+}
+.details .recentOrder table tr td:nth-child(2)
+{
+    text-align: end;   
+}
+.details .recentOrder table tr td:nth-child(3){
+    text-align: center;
+}
+
+.recentCustomer
+{
+    position: relative;
+    display:grid;
+    min-height: 370px;
+    padding: 20px;
+    background: var(--white);
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+.recentCustomer .imgBox
+{
+    position: relative;
+    width:30px;
+    height: 30px;
+    border-radius:50%;
+    overflow:hidden;
+}
+.recentCustomer .imgBox img
+{
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.recentCustomer table tr td
+{
+    padding: 12px 10px;
+
+}
+.recentCustomer table tr td h4
+{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2em;
+}
+.recentCustomer table tr td h4 span
+{
+    font-size: 14px;
+    color: #97c5d8;
+}
+.recentCustomer table tr:hover
+{
+    background: #FFEEAD;
+    color: var(--black);
+}
+.recentCustomer table tr:hover td h4 span
+{
+    color: #97c5d8;
+}
+/* reponsive*/
+@media(max-width:911px)
+{
+    .navigation
+    {
+        left: -300px;
+    }
+    .navigation.active
+    {
+        width: 300px;
+        left: 0;
+    }
+    .main
+    {
+        width: 100%;
+        left: 0;
+
+    }
+    .main.active
+    {
+        left: 300px;
+    }
+    .cardBox
+    {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media(max-width: 768px)
+{
+    .details
+    {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .recentOrder
+    {
+        overflow-x: auto;
+    }
+}
+@media(max-width: 480px)
+{
+    .cardBox
+    {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .cardHeader h2
+    {
+        font-size: 20px;
+    }
+    .user
+    {
+        min-width: 60px;
+    }
+    .navigation
+    {
+        width: 100%;
+        left: -100%;
+        z-index: 1000;
+    }
+    .navigation.active
+    {
+        width: 100%;
+        left: 0;
+    }
+    .toggle
+    {
+        z-index: 10001;
+    }
+    .main.active .toggle
+    {
+        position: fixed;
+        right: 0;
+        left: initial;
+        color: #fff;
+    }
+}
+/*customer*/
+.detail
+{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns:1fr;
+    grid-gap: 30px;
+    margin-top: 10px;
+}
+.detail .customer
+{
+    position: relative;
+    width: 100%;
+    display: grid;
+    min-height: 500px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+.cardHeaders
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.cardHeaders h2
+{
+    font-weight: 600;
+    color: var(--main);
+}
+
+.detail table
+{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+
+}
+.detail table thead td
+{
+    font-weight: 600;
+}
+.detail .customer table tr
+{
+    color: var(--black);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.detail .customer table tr:last-child
+{
+    border-bottom: none;
+}
+.detail .customer table tbody tr:hover
+{
+    background: var(--main);
+    color: var(--white);
+}
+.detail .customer table tr td
+{
+    padding: 15px;
+}
+.detail .customer table tr td:last-child
+{
+    text-align: end;
+
+}
+.detail .customer table tr td ion-icon
+{
+    font-size: 1em;
+    color: var(--white);
+}
+
+.customer .imgBox
+{
+    position: relative;
+    width:50px;
+    height: 50px;
+    border-radius:50%;
+    overflow:hidden;
+}
+.customer .imgBox img
+{
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.customer table tr td
+{
+    padding: 12px 10px;
+
+}
+.customer table tr td h4
+{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2em;
+}
+.customer table tr td h4 span
+{
+    font-size: 14px;
+    color: #97c5d8;
+}
+.customer table tr:hover td h4 span
+{
+    color: var(--white);
+}
+.customer table tr:hover td ion-icon
+{
+    color: var(--white);
+}
+.customer table tr td button
+{
+    position: relative;
+    font-size: 1.25em;
+    width:40px;
+    height:40px;
+    color:var(--white);
+    background:#f5c265;
+    border-radius: 50%;
+    border-color:#f5c265 ;
+}
+
+/*order*/
+.listOrder
+{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns:1fr;
+    grid-gap: 30px;
+    margin-top: 10px;
+}
+.listOrder .order
+{
+    position: relative;
+    width: 100%;
+    display: grid;
+    min-height: 500px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+.cardHeader1
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.cardHeader1 h2
+{
+    font-weight: 600;
+    color: var(--main);
+}
+
+.viewDetail
+{
+    text-decoration: none;
+    color: #695faa;
+    font-weight: 500;
+}
+.listOrder table
+{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+
+}
+.listOrder table thead td
+{
+    font-weight: 600;
+}
+.listOrder .order table tr
+{
+    color: var(--black);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.details .recentOrder table tr:last-child
+{
+    border-bottom: none;
+}
+.listOrder .order table tbody tr:hover
+{
+    background: var(--main);
+    color: var(--white);
+}
+.listOrder .order table tr td
+{
+    padding: 15px;
+}
+.listOrder .order table tr td:last-child
+{
+    text-align: end;
+
+}
+.listOrder .order table tr td:nth-child(2)
+{
+    text-align: center;   
+}
+.listOrder .order table tr td:nth-child(3){
+    text-align: end;
+}
+.status.dones
+{
+    padding: 2px 4px;
+    background: #97c5d8;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.status.cancels
+{
+    padding: 2px 4px;
+    background: #c24229;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.status.news
+{
+    padding: 2px 4px;
+    background: #f5c265;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+/*oder detail*/
+/*product*/
+.detailsproduct
+{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns:1fr;
+    grid-gap: 30px;
+    margin-top: 10px;
+}
+.detailsproduct .product
+{
+    position: relative;
+    width: 100%;
+    display: grid;
+    min-height: 500px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+.cardHeader3
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.cardHeader3 h2
+{
+    font-weight: 600;
+    color: var(--main);
+}
+ button.insert
+{
+    position: relative;
+    font-size: 1.25em;
+    width:50px;
+    height:50px;
+    color:var(--white);
+    background:#97c5d8;
+    border-radius: 50%;
+    border-color:#97c5d8;
+}
+
+.detailsproduct table
+{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+
+}
+.detailsproduct table thead td
+{
+    font-weight: 600;
+}
+.detailsproduct .product table tr
+{
+    color: var(--black);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.detailsproduct .product table tr:last-child
+{
+    border-bottom: none;
+}
+.detailsproduct .product table tbody tr:hover
+{
+    background: var(--while);
+    color: var(--main);
+}
+.detailsproduct .product table tr td
+{
+    padding: 15px;
+}
+.detailsproduct .product table tr td:last-child
+{
+    text-align: end;
+
+}
+.detailsproduct .product table tr td ion-icon
+{
+    font-size: 1em;
+    color: var(--white);
+}
+
+.product .imgBox
+{
+    position: relative;
+    width:70px;
+    height: 70px;
+    border-radius:50%;
+    overflow:hidden;
+}
+.product .imgBox img
+{
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product table tr td
+{
+    padding: 12px 10px;
+
+}
+.product table tr td h4
+{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2em;
+}
+.product table tr td h4 span
+{
+    font-size: 14px;
+    color: #97c5d8;
+}
+.product table tr:hover td h4 span
+{
+    color: var(--white);
+}
+.product table tr:hover td ion-icon
+{
+    color: var(--white);
+}
+ td button
+{
+    position: relative;
+    font-size: 1.25em;
+    width:40px;
+    height:40px;
+    color:var(--white);
+    background:#f5c265;
+    border-radius: 50%;
+    border-color:#f5c265 ;
+}
+td button.delete
+{
+    position: relative;
+    font-size: 1.25em;
+    width:40px;
+    height:40px;
+    color:var(--white);
+    background:#fa897b;
+    border-radius: 50%;
+    border-color:#fa897b;
+}
+/*category*/
+/*contact*/
+/*login*/
+.login
+{
+    width: 350px;
+    height:550px;
+    padding: 60px 35px 35px 35px;
+    background: var(--white);
+    overflow:hidden;
+    border-radius: 20px;
+    box-shadow: 0px 14px 25px rgba(0, 0, 0, 0.08);
+    font-weight: 600;
+}
+.login .logo
+{
+    background: #e8a86d;
+    text-align: center;
+    width:140px;
+    height:140px;
+    color:var(--white);
+    margin: -50px 75px;
+    font-size: 5em;
+    padding: 30px;
+    border-radius:50%;
+}
+.login .title
+{
+    text-align: center;
+    font-size: 24px;
+    color: #0d0d0d;
+    letter-spacing: .5px;
+    margin:50px;
+}
+.login .credentials
+{
+    width: 100%;
+    color: #0d0d0d;
+    margin: 5px;
+}
+.login .credentials ion-icon
+{
+    font-size:2em;
+}
+.login .credentials input
+{
+   border-radius: 20px;
+   padding-top: 8px;
+   padding-right: 50px;
+   padding-bottom: 8px;
+   border: 2px solid #0d0d0d;
+   outline: none;
+}
+.login .credentials .username
+{
+    margin-bottom: 30px;
+}
+.login button
+{
+    font-size: 1.5em;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 20px;
+    border-radius: 20px;
+    background:#e8a86d;
+    color:#fff;
+    border-color: #e8a86d;
+    margin-top: 40px;
+    margin-left: 80px;
+}
+.login h4
+{
+    margin-left: 80px;
+    margin-top: 50px;
+    color: #0d0d0d;
+}
+
+/*edit*//*edit*/
+.crudproduct
+{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns:1fr;
+    grid-gap: 30px;
+    margin-top: 10px;
+}
+.crudproduct .crud
+{
+    position: relative;
+    width: 100%;
+    display: grid;
+    min-height: 500px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+.cardHeader4
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.cardHeader4 h2
+{
+    font-weight: 600;
+    color: var(--main);
+}
+.crudproduct .none
+{
+    margin-top: 50px;
+}
+.crudproduct h3
+{
+    color: #f5c265;
+    font-size: 16px;
+    font-weight: 600;
+}
+.crudproduct .name input
+{
+    width: 400px;
+    outline: none;
+    height:40px;
+    border: 2px solid #97dbae;
+    border-radius:20px;
+    margin-bottom: 20px;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+.crudproduct .category-pro input
+{
+    width: 400px;
+    outline: none;
+    height:40px;
+    border: 2px solid #97dbae;
+    border-radius:20px;
+    margin-bottom: 20px;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+.crudproduct .price-pro input
+{
+    width: 400px;
+    outline: none;
+    height:40px;
+    border: 2px solid #97dbae;
+    border-radius:20px;
+    margin-bottom: 20px;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+.crudproduct .description-pro input
+{
+    width: 400px;
+    outline: none;
+    height:100px;
+    border: 2px solid #97dbae;
+    border-radius:20px;
+    margin-bottom: 20px;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+.crudproduct .id input
+{
+    width: 400px;
+    outline: none;
+    height:40px;
+    border: 2px solid #97dbae;
+    border-radius:20px;
+    margin-bottom: 20px;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+.crudproduct ion-icon
+{
+    font-size:1.75em;
+    color: var(--main);
+}
+.crudproduct button
+{
+    position: relative;
+    margin-top: 650px;
+    margin-right: 250px;
+    padding: 10px 30px;
+    color: #c24229;
+    background: #97c5d8;
+    border-radius: 40px;
+    border-color: #97c5d8;
+    
+}
+/*edit category*/
+.crudproduct .editcate
+{
+    position: relative;
+    margin-top: 300px;
+    margin-right: 250px;
+    padding: 10px 30px;
+    color: #c24229;
+    background: #97c5d8;
+    border-radius: 40px;
+    border-color: #97c5d8;
+}
+.crudproduct .send
+{
+    position: relative;
+    margin-top: 450px;
+    margin-right: 250px;
+    padding: 10px 30px;
+    color: #c24229;
+    background: #97c5d8;
+    border-radius: 40px;
+    border-color: #97c5d8;
+}
+
+/*order- detail*/
+.order-table{
+	width: 100%;
+	border-collapse: collapse;
+	
+	
+}
+.detail-info{
+	display: flex;
+	flex-wrap: wrap;
+}
+.order-table th{
+	text-align: center;
+	padding:5px;
+	color: #fff;
+	background-color: var(--main);
+	font-weight: normal;
+}
+.order-table td{
+	padding: 10px;
+}
+
+.order-table td input{
+	width:60px;
+	height: 30px;
+	padding: 5px;
+}
+.order-table td a{
+	color: #ff235b;
+	font-size: 16px;
+	text-decoration: none !important;
+}
+.order-detail-image{
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+	margin-right: 10px;
+}
+
+.total-price{
+	
+	display:flex;
+	justify-content: flex-end;
+	
+}
+
+.total-price table{
+	
+	border-top: 3px solid #000;
+	width: 100%;
+	max-width: 400px;
+	
+}
+
+.order-table td:last-child{
+	text-align:right;
+	
+}
+
+
+.order-table th:last-child{
+	text-align: end;
+	
+}
+
+/*add new product*/
+.add-new-product{
+	position: absolute;
+	
+}
+
+
+.page__title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+.breadcrumb{
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+.home__link{
+    text-decoration: none;
+    color: rgba(102,102,102,0.7);
+}
+.current__page{
+    color: #333;
+    font-weight: bold;
+}
+.page__sort{
+    font-size: 1.6rem;
+    color: #333;
+}
+.sory__by{
+    padding: 8px 8px;
+    min-width: 270px;
+    box-shadow: inset 0 -1.4em 1em 0 rgb(0 0 0 / 2%);
+    border: 1px solid #ddd;
+    outline: none;
+    font-size: 1.6rem;
+}
+.products__wrapper{
+    display: flex;
+    justify-content: space-between;  
+    gap: 2rem; 
+}
+.products__rigtside{
+    width: 80%;
+}
+.products__leftside{
+    width: 20%;
+    margin-top: 20px;
+}
+.category-box{
+    overflow: hidden;
+}
+.category__link{
+    display: block;
+    width: 80%;
+    cursor:pointer;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.6rem;
+    padding: 10px 0;
+    margin: 0 20px;
+    border-bottom: 1px solid rgb(238, 233, 233);
+}
+.category__link:hover{
+    color: #c89979;
+}
+.category__link:nth-child(1){
+    margin-top: 16px;
+}
+.category__link:last-child{
+    margin-bottom: 16px;
+    border-bottom: none;
+}
+.category-box, .best-seller-box{
+    margin-bottom: 20px;
+}
+.best-seller__item{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(245, 243, 243);
+}
+.best-seller__item:last-child{
+    border-bottom: none;
+}
+.best-seller-box__wrapper{
+    margin: 5px 12px;
+}
+.img__link{
+    display: block;
+    width: 30%;
+}
+.img__link > img{
+    width: 100%;
+    object-fit: cover;
+}
+.item__name{
+    font-size: 1.6rem;
+    display: block;
+    color: #333;
+    margin: 6px 0 12px 0;
+}
+.item__price{
+    font-size: 1.6rem;
+    display: block;
+    color: #333;
+}
+.product-wrap{
+    flex-wrap: wrap;
+}
+.pagingation{
+    margin: 60px 0;
+    text-align: center;
+}
+.pagination__wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+}
+.page__item,.next-page,.prev-page{
+    padding: 10px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 1rem;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    display: block;
+}
+.page-active{
+    background-color: #333;
+    color: #fff;
+}
+.item__name__link{
+	text-decoration: none;
+}
+.page__item:hover ,.next-page:hover,.prev-page:hover{
+    background-color: #333;
+    color: #fff;
+}
+
+.save-btn{
+	text-align: center;
+	margin-top: 20px;
+}
+.save-btn button{
+	border: none;
+	cursor: pointer;
+}
+.radio-group{
+	display:flex;
+	gap: 20px;
+	justify-content: center
+}
+#cate-chose{
+	width:182px;
+	outline:none;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.search__form-group {
+	background-color: #fff;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+}
+
+.search__input {
+	width: 100%;
+	display: block;
+	outline: none;
+	padding: 10px 10px;
+	font-size: 1rem;
+}
+.btn.btn--search {
+	display: block;
+	min-height: 40px;
+	color: #fff;
+	min-width: 70px;
+	border: none;
+}
+
+
+
