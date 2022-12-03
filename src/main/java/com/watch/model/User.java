@@ -1,5 +1,7 @@
 package com.watch.model;
 
+import java.security.PublicKey;
+
 public class User {
 	private String userName;
 	private String password;
@@ -9,11 +11,13 @@ public class User {
 	private String address;
 	private String city;
 	private int role;
+
+	private PublicKey pubKey;
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
 	public User(String userName, String password, String firstName, String lastName, String phoneNumber, String address,
-			String city, int role) {
+				String city, int role, PublicKey pubKey) {
 		super();
 		this.userName = userName;
 		this.password = password;
@@ -23,6 +27,7 @@ public class User {
 		this.address = address;
 		this.city = city;
 		this.role = role;
+		this.pubKey = pubKey;
 	}
 	public String getUserName() {
 		return userName;
@@ -72,6 +77,13 @@ public class User {
 	public void setRole(int role) {
 		this.role = role;
 	}
-	
+
+	public PublicKey getPubKey() {
+		return pubKey;
+	}
+
+	public void setPubKey(PublicKey pubKey) {
+		this.pubKey = pubKey;
+	}
 	
 }

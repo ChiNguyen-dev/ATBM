@@ -38,7 +38,7 @@ public class CheckoutProcess extends HttpServlet {
 			Cart cart = (Cart) ss.getAttribute("cart");
 			Hash hash = Hash.getInstance("MD5");
 			String hashcode = hash.hash(cart.toString());
-			request.setAttribute("hashcode", hashcode);
+			ss.setAttribute("hashcode", hashcode);
 			request.getRequestDispatcher("/view/client/checkout.jsp").forward(request, response);
 
 		} else {
