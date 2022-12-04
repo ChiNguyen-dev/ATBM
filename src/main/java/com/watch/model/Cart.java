@@ -9,7 +9,6 @@ public class Cart {
 
 	public Cart() {
 		this.items = new HashMap<String, Item>();
-
 	}
 
 	public Map<String, Item> getItems() {

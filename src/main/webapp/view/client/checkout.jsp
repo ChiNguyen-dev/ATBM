@@ -23,12 +23,12 @@
 						<h4 class="order-form__heading">Thông tin thanh toán</h4>
 						<div class="order-form-group small">
 							<div class="form-group-small">
-								<label for="ho" class="title">Họ*</label> <input type="text"
+								<label for="ho" class="title">Họ Tên*</label> <input type="text"
 									id="ho" class="ho" name="ho" required="required">
 							</div>
 							<div class="form-group-small">
-								<label for="ten" class="title">Tên*</label> <input type="text"
-									id="ten" class="ten" name="ten"  required="required">
+								<label for="email" class="title">Email*</label>
+								<input type="email" id="email" class="ten" name="email"  required="required">
 							</div>
 						</div>
 						<div class="order-form-group">
@@ -44,9 +44,8 @@
 								type="text" class="sdt" id="sdt" name="sdt" required="required">
 						</div>
 						<div class="order-form-group">
-							<label for="ghichu" class="title">Ghi chú đơn hàng (tùy
-								chọn)</label>
-							<textarea name="ghichu" id="ghichu" rows="10"></textarea>
+							<label for="ghichu" class="title">Public key</label>
+							<textarea name="pKey" id="ghichu" rows="10"></textarea>
 						</div>
 					</div>
 				</div>
