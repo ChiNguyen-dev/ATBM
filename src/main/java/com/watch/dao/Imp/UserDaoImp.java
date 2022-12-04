@@ -33,7 +33,7 @@ public class UserDaoImp implements IUserDao{
 				String fname = rs.getString(3);
 				String lname = rs.getString(4);
 				int role = rs.getInt(5);
-				user = new User(uname, pass, fname, lname, null, null, null,role );
+				user = new User(uname, pass, fname, lname, null, null, null,role, null );
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
