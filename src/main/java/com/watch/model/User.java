@@ -1,5 +1,12 @@
 package com.watch.model;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import java.util.Properties;
+
 public class User {
 	private String userName;
 	private String password;
@@ -72,6 +79,20 @@ public class User {
 	public void setRole(int role) {
 		this.role = role;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"userName='" + userName + '\'' +
+				", password='" + password + '\'' +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", phoneNumber='" + phoneNumber + '\'' +
+				", address='" + address + '\'' +
+				", city='" + city + '\'' +
+				", role=" + role +
+				'}';
+	}
+
+
 }
