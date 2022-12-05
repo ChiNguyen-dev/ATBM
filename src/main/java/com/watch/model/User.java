@@ -5,6 +5,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import java.security.PublicKey;
 import java.util.Properties;
 
 public class User {
@@ -94,11 +95,7 @@ public class User {
 				'}';
 	}
 
-<<<<<<< Updated upstream
-
-=======
 	public void setPubKey(PublicKey pubKey) {
 		this.pubKey = pubKey;
 	}
->>>>>>> Stashed changes
 }
