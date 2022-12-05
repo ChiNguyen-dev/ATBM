@@ -18,14 +18,15 @@ public class User {
     private String city;
     private int role;
 
-    private PublicKey pubKey;
+
+    private String pubicKey;
 
     public User() {
         // TODO Auto-generated constructor stub
     }
 
     public User(String userName, String password, String firstName, String lastName, String phoneNumber, String address,
-                String city, int role, PublicKey pubKey) {
+                String city, int role, String pubicKey) {
         super();
         this.userName = userName;
         this.password = password;
@@ -35,7 +36,7 @@ public class User {
         this.address = address;
         this.city = city;
         this.role = role;
-        this.pubKey = pubKey;
+        this.pubicKey = pubicKey;
     }
 
     public String getUserName() {
@@ -115,12 +116,13 @@ public class User {
                 ", role=" + role +
                 '}';
     }
-
-    public void setPubKey(PublicKey pubKey) {
-        this.pubKey = pubKey;
+    public String getPubicKey() {
+        return pubicKey;
     }
 
-    public PublicKey getPubKey() {
-        return pubKey;
+    public void setPubicKey(String pubicKey) {
+        this.pubicKey = pubicKey;
     }
+
+
 }

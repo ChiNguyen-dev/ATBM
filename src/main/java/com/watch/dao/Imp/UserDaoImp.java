@@ -46,7 +46,7 @@ public class UserDaoImp implements IUserDao {
         return user;
     }
 
-    @Override
+
     public boolean insert(String firstName, String lastName, String email, String password, String p_key) {
         String query = "insert into KhachHang(TaiKhoan, MatKhau, Ho, Ten, uRole,p_key) values (?,?,?,?,2,?)";
         try {

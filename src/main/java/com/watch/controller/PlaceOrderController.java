@@ -3,7 +3,11 @@ package com.watch.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.InvalidKeyException;
+import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
+import java.security.PublicKey;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
 import java.util.Date;
 import java.util.Properties;
 
@@ -58,7 +62,13 @@ public class PlaceOrderController extends HttpServlet {
 		} else {
 			try {
 				RSA rsa = new RSA();
-				rsa.publicKey = user.getPubKey();
+				String stringPubKey = user.getPubicKey();
+				byte[] byteKey = Base64.getDecoder().decode(stringPubKey);
+
+				X509EncodedKeySpec X509publicKey = new X509EncodedKeySpec(byteKey);
+				KeyFactory kf = KeyFactory.getInstance("RSA");
+				PublicKey pubKey = kf.generatePublic(X509publicKey);
+				rsa.publicKey = pubKey;
 				String sntHashcode = rsa.decrypt(signature.getBytes());
 				String hashcode = (String) ss.getAttribute("hashcode");
 				if (sntHashcode.equals(hashcode)){

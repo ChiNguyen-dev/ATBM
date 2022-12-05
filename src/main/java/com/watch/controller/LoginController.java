@@ -48,11 +48,7 @@ public class LoginController extends HttpServlet {
 			ss.setAttribute("user", user);
 			response.sendRedirect("./direction-control");
 		} else {
-			PrintWriter out = response.getWriter();
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('Đăng nhập thất bại');");
-			out.println("location='/Project_CuoiKy/view/client/login.jsp'");
-			out.println("</script>");
+			request.getRequestDispatcher("/view/client/login.jsp").forward(request,response);
 		}
 		
 	}
