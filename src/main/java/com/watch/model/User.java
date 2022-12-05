@@ -94,5 +94,11 @@ public class User {
 				'}';
 	}
 
+<<<<<<< Updated upstream
 
+=======
+	public void setPubKey(PublicKey pubKey) {
+		this.pubKey = pubKey;
+	}
+>>>>>>> Stashed changes
 }

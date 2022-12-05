@@ -14,16 +14,12 @@ public class UserServiceImp implements IUserService {
 	@Override
 	public User login(String username, String password) {
 		User u = dao.getUser(username,password);
-		if(u != null) {
-			return u;
-		}
-		return null;
-		
+		return u != null ? u : null;
 	}
 
 	@Override
-	public boolean register(String firstname, String lastname, String username, String password) {
-		return dao.insert(firstname, lastname, username, password);
+	public boolean register(String firstname, String lastname, String username, String password,String p_key) {
+		return dao.insert(firstname, lastname, username, password,p_key);
 	}
 
 }
