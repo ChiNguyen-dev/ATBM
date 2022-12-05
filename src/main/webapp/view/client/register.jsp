@@ -43,7 +43,10 @@
 					  <lab class="sub-title" for="username">Mật khẩu</lab>
 					<input  required="required" type="password" class="sign-up__input" name="password" placeholder="Nhập mật khẩu">
 				  </div>
-				 
+				   <div class="sign-up__form-group">
+					   <lab class="sub-title" for="username">Khóa ID:</lab>
+					   <input  required="required" type="password" class="sign-up__input" name="p_key" placeholder="Nhập khóa công khai">
+				   </div>
 				  <button type="submit" class="btn btn-signin">Đăng ký</button>
 				  <div class="not-member">
 					Đã có tài khoản? <a href='<c:url value ="/view/client/login.jsp"></c:url>' class="sign-up">Đăng nhập</a>
