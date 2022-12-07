@@ -41,27 +41,41 @@ public class Hash {
 		BigInteger output = new BigInteger(1,hashText);
 		return output.toString(16);
 	}
-	public String hashFile(String path, String dest) {
-		if (md == null) return "";
-		if (new File(path).exists()) {
-			try {
-				DigestInputStream dgis = new DigestInputStream(new BufferedInputStream(new FileInputStream(path)), this.md);
-				int i;
-				byte[] byteRead = new byte[1024];
-				do {
-					i = dgis.read(byteRead);
-				} while (i != -1);
-				BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(dest));
+//	public String hashFile(String path, String dest) {
+//		if (md == null) return "";
+//		if (new File(path).exists()) {
+//			try {
+//				DigestInputStream dgis = new DigestInputStream(new BufferedInputStream(new FileInputStream(path)), this.md);
+//				int i;
+//				byte[] byteRead = new byte[1024];
+//				do {
+//					i = dgis.read(byteRead);
+//				} while (i != -1);
+//				BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(dest));
+//				BigInteger output = new BigInteger(1, dgis.getMessageDigest().digest());
+//				bos.write(output.toString(16).getBytes());
+//				bos.close();
+//				return output.toString(16);
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		return "";
+//	}
 
-				dgis.close();
-				BigInteger output = new BigInteger(1, dgis.getMessageDigest().digest());
-				bos.write(output.toString(16).getBytes());
-				bos.close();
-				return output.toString(16);
-				
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+	public  String hashFile(String path) throws IOException, NoSuchAlgorithmException {
+		if (md == null)
+			return "";
+		if (new File(path).exists()) {
+			BufferedInputStream bis = new BufferedInputStream(new FileInputStream(path));
+			DigestInputStream dis = new DigestInputStream(bis, MessageDigest.getInstance(name));
+			int i = 0;
+			byte[] buff = new byte[1024];
+			do {
+				i = dis.read(buff);
+			} while (i != -1);
+			BigInteger output = new BigInteger(1, dis.getMessageDigest().digest());
+			return output.toString(16);
 		}
 		return "";
 	}

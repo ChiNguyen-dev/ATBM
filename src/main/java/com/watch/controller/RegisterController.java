@@ -28,6 +28,7 @@ public class RegisterController extends HttpServlet {
 		String firstName = request.getParameter("firstname");
 		String lastName = request.getParameter("lastname");
 		String p_key = request.getParameter("p_key");
+		System.out.println(p_key);
 		uService = new UserServiceImp();
 		boolean isOk = uService.register(firstName, lastName, username, pass,p_key);
 		if (isOk) {

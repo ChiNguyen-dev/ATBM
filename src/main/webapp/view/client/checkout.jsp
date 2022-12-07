@@ -24,7 +24,7 @@
 						<div class="order-form-group small">
 							<div class="form-group-small">
 								<label for="ho" class="title">Họ Tên*</label> <input type="text"
-									id="ho" class="ho" name="ho" required="required">
+									id="ho" class="ho" name="hoten" required="required">
 							</div>
 							<div class="form-group-small">
 								<label for="email" class="title">Email*</label>
@@ -44,8 +44,12 @@
 								type="text" class="sdt" id="sdt" name="sdt" required="required">
 						</div>
 						<div class="order-form-group">
-							<label for="ghichu" class="title">Public key</label>
-							<textarea name="pKey" id="ghichu" rows="10"></textarea>
+							<label for="" class="title">Mã đơn hàng*</label> <input
+								type="text" class="sdt" id="" name="" value="${sessionScope.hashcode}" disabled>
+						</div>
+						<div class="order-form-group">
+							<label for="ghichu" class="title">Chữ ký số:</label>
+							<textarea name="signature" id="ghichu" rows="10"></textarea>
 						</div>
 					</div>
 				</div>

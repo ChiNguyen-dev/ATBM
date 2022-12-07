@@ -33,7 +33,8 @@ public class UserDaoImp implements IUserDao{
 				String fname = rs.getString(3);
 				String lname = rs.getString(4);
 				int role = rs.getInt(5);
-				user = new User(uname, pass, fname, lname, null, null, null,role, null );
+				String p_key = rs.getString(6);
+				user = new User(uname, pass, fname, lname, null, null, null,role, p_key );
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -42,14 +43,15 @@ public class UserDaoImp implements IUserDao{
 	} 
 
 	@Override
-	public boolean insert(String firstName, String lastName, String email, String password) {
-		String query = "insert into KhachHang(TaiKhoan, MatKhau, Ho, Ten, uRole) values (?,?,?,?,2)";
+	public boolean insert(String firstName, String lastName, String email, String password,String p_key) {
+		String query = "insert into KhachHang(TaiKhoan, MatKhau, Ho, Ten, uRole,p_key) values (?,?,?,?,2,?)";
 		try {
 			ps= conn.prepareStatement(query);
 			ps.setString(1, email);
 			ps.setString(2, password);
 			ps.setString(3, firstName);
 			ps.setString(4, lastName);
+			ps.setString(5,p_key);
 			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {

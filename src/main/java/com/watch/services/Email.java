@@ -5,6 +5,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import java.io.*;
 import java.util.Properties;
 
 public class Email {
@@ -24,21 +25,22 @@ public class Email {
             }
         });
         Message message = new MimeMessage(session);
-        message.setSubject("Thông báo đặt hàng");
+        message.setSubject("Thông báo khách hàng");
 
         Address address = new InternetAddress(mail);
         message.setRecipient(Message.RecipientType.TO, address);
 
         MimeMultipart multipart = new MimeMultipart();
 
-//        MimeBodyPart attachment = new MimeBodyPart();
-//        attachment.attachFile("");
+        MimeBodyPart attachment = new MimeBodyPart();
+        attachment.attachFile(new File("src/mau-don-xin-xac-nhan-don-hang.pdf"));
 
         MimeBodyPart messageBodyPart = new MimeBodyPart();
-        messageBodyPart.setContent("<h1>Đơn hàng của bạn</h1>", "text/html");
+//        messageBodyPart.setContent("<h1>Mã xác nhận</h1><p>" + IDFile + "</p>", "text/html");
+        messageBodyPart.setContent("<h1>Mã xác nhận</h1>", "text/html");
 
         multipart.addBodyPart(messageBodyPart);
-//        multipart.addBodyPart(attachment);
+        multipart.addBodyPart(attachment);
 
         message.setContent(multipart);
 

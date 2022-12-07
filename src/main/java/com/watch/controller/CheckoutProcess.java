@@ -17,8 +17,8 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet("/checkoutprocess")
 public class CheckoutProcess extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -27,31 +27,31 @@ public class CheckoutProcess extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession ss = request.getSession();
-		User user = (User) ss.getAttribute("user");
-		if(user != null) {
-			Cart cart = (Cart) ss.getAttribute("cart");
-			Hash hash = Hash.getInstance("MD5");
-			String hashcode = hash.hash(cart.toString());
-			ss.setAttribute("hashcode", hashcode);
-			request.getRequestDispatcher("/view/client/checkout.jsp").forward(request, response);
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        HttpSession ss = request.getSession();
+        User user = (User) ss.getAttribute("user");
+        if (user != null) {
+            Cart cart = (Cart) ss.getAttribute("cart");
+            Hash hash = Hash.getInstance("MD5");
+            String hashcode = hash.hash(cart.toString());
+            ss.setAttribute("hashcode", hashcode);
+            request.getRequestDispatcher("/view/client/checkout.jsp").forward(request, response);
 
-		} else {
-			request.getRequestDispatcher("/view/client/login.jsp").forward(request, response);
-		}
-	}
+        } else {
+            request.getRequestDispatcher("/view/client/login.jsp").forward(request, response);
+        }
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doGet(request, response);
+    }
 
 }
