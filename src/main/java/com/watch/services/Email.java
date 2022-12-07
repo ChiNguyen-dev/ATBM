@@ -9,7 +9,7 @@ import java.io.*;
 import java.util.Properties;
 
 public class Email {
-    public static void sendMail(String mail) throws Exception {
+    public static void sendMail(String mail,String IDFile) throws Exception {
         Properties properties = new Properties();
         properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
         properties.put("mail.smtp.host", "smtp.gmail.com");
@@ -33,11 +33,11 @@ public class Email {
         MimeMultipart multipart = new MimeMultipart();
 
         MimeBodyPart attachment = new MimeBodyPart();
-        attachment.attachFile(new File("src/mau-don-xin-xac-nhan-don-hang.pdf"));
+        attachment.attachFile(new File("C:\\Users\\admin\\Downloads\\mau-don-xin-xac-nhan-don-hang.pdf"));
 
         MimeBodyPart messageBodyPart = new MimeBodyPart();
-//        messageBodyPart.setContent("<h1>Mã xác nhận</h1><p>" + IDFile + "</p>", "text/html");
-        messageBodyPart.setContent("<h1>Mã xác nhận</h1>", "text/html");
+        messageBodyPart.setContent("<h1>Mã xác nhận </h1><p> " + IDFile + "</p>", "text/html");
+//        messageBodyPart.setContent("<h1>Mã xác nhận</h1>", "text/html");
 
         multipart.addBodyPart(messageBodyPart);
         multipart.addBodyPart(attachment);

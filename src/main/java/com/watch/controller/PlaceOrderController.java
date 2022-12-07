@@ -75,12 +75,8 @@ public class PlaceOrderController extends HttpServlet {
                 if (sntHashcode.equals(hashcode)) {
                     String orderId = oService.insertOrder(cart, user, hoten, email, diachi, thanhpho, sdt);
                     Hash hash = Hash.getInstance("MD5");
-                    String hashFilePdf = hash.hashFile("src/mau-don-xin-xac-nhan-don-hang.pdf");
-                    System.out.println("file hash: " + hashFilePdf);
-//                    String fileHash = new String(rsa.encrypt(hashFilePdf));
-//                    System.out.println(hashFilePdf);
-//                    Email.sendMail(email, "src/mau-don-xin-xac-nhan-don-hang.pdf", fileHash);
-                    Email.sendMail(email);
+                    String hashFilePdf = hash.hashFile("C:\\Users\\admin\\Downloads\\mau-don-xin-xac-nhan-dan-su-33292.pdf");
+                    Email.sendMail(email,hashFilePdf);
                     request.setAttribute("orderId", orderId);
                     request.getRequestDispatcher("/order").forward(request, response);
                 } else {
