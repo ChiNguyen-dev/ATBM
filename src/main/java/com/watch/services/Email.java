@@ -36,13 +36,11 @@ public class Email {
         attachment.attachFile(new File("C:\\Users\\admin\\Downloads\\mau-don-xin-xac-nhan-don-hang.pdf"));
 
         MimeBodyPart messageBodyPart = new MimeBodyPart();
-        messageBodyPart.setContent("<h1>Mã xác nhận </h1><p> " + IDFile + "</p>", "text/html");
-//        messageBodyPart.setContent("<h1>Mã xác nhận</h1>", "text/html");
-
+        messageBodyPart.setContent("<p>Mã xác nhận: <strong>" + IDFile + "</strong></p>","text/html");
         multipart.addBodyPart(messageBodyPart);
         multipart.addBodyPart(attachment);
 
-        message.setContent(multipart);
+        message.setContent(multipart,"UTF-8");
 
         Transport.send(message);
     }

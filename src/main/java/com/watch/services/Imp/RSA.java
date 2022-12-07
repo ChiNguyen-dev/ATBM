@@ -23,14 +23,13 @@ public class RSA {
         privateKey = keypair.getPrivate();
     }
 
-    public byte[] encrypt(String text) throws NoSuchAlgorithmException, NoSuchPaddingException,
+    public String encrypt(String text) throws NoSuchAlgorithmException, NoSuchPaddingException,
             IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
-//        if (keypair == null) createKey();
         byte[] byteText = text.getBytes();
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.ENCRYPT_MODE, publicKey);
         byte[] cipherByte = cipher.doFinal(byteText);
-        return cipherByte;
+        return new String(cipherByte);
     }
 
     public String decrypt(String cipherbyte) throws NoSuchAlgorithmException, NoSuchPaddingException,
