@@ -58,8 +58,8 @@ public class PlaceOrderController extends HttpServlet {
                 || thanhpho == null || thanhpho.equals("") || sdt == null || sdt.equals("")) {
             PrintWriter out = response.getWriter();
             out.println("<script type=\"text/javascript\">");
-            out.println("alert('Infomation is required');");
-            out.println("location='/Project_CuoiKy/view/client/checkout.jsp'");
+            out.println("alert('Information is required');");
+            out.println("location='./view/client/checkout.jsp'");
             out.println("</script>");
         } else {
             try {

@@ -28,21 +28,12 @@ public class RegisterController extends HttpServlet {
 		String firstName = request.getParameter("firstname");
 		String lastName = request.getParameter("lastname");
 		String p_key = request.getParameter("p_key");
-		System.out.println(p_key);
 		uService = new UserServiceImp();
 		boolean isOk = uService.register(firstName, lastName, username, pass,p_key);
 		if (isOk) {
-			PrintWriter out = response.getWriter();
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('Register Success');");
-			out.println("location='/Project_CuoiKy/view/client/login.jsp'");
-			out.println("</script>");
+			request.getRequestDispatcher("/home").forward(request, response);
 		} else {
-			PrintWriter out = response.getWriter();
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('Register fail');");
-			out.println("location='/Project_CuoiKy/view/client/register.jsp'");
-			out.println("</script>");
+			request.getRequestDispatcher("/view/client/register.jsp").forward(request, response);
 		}
 		
 	}
