@@ -29,7 +29,7 @@ public class RSA {
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.ENCRYPT_MODE, publicKey);
         byte[] cipherByte = cipher.doFinal(byteText);
-        return new String(cipherByte);
+        return Base64.getEncoder().encodeToString(cipherByte);
     }
 
     public String decrypt(String cipherbyte) throws NoSuchAlgorithmException, NoSuchPaddingException,
@@ -41,21 +41,11 @@ public class RSA {
         return new String(cipher.doFinal(Base64.getDecoder().decode(cipherbyte)));
     }
 
-    public static void main(String[] args) {
-//        RSA rsa = new RSA();
-//        byte[] byteKey = Base64.getDecoder().decode("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDG05BaDdqWDLFPjQUD+hbidCuirb4Z8wwxsJadlFVtvf1hkrY27X0HPWu7SEy6aoFdfPnVqtK3+tS1Kbf3WnyvSr9kM1Hnm/NPXE2Y8/dsWl6eVFg/o+JqBSkT9MsNfig6o6465936iLP/YkPE0l6y7ookBO1OGhPmukacxdQrZQIDAQAB");
-//        X509EncodedKeySpec X509publicKey = new X509EncodedKeySpec(byteKey);
-//        PublicKey pubKey;
-//        try {
-//            KeyFactory kf = KeyFactory.getInstance("RSA");
-//            pubKey = kf.generatePublic(X509publicKey);
-//            rsa.publicKey = pubKey;
-//            rsa.decrypt(("DskGp+71dEPzPbGjLDsriASEnvyW8LebOpwuGz+BRW+wffgTf+3n1FU" +
-//                    "c6XWSU382fB4+7b0eM+8py0MvyddyblIIeklkuS3q+XQ6y/hjU2OxbWfdkBlk2NUoQlk+euqESNs29GMglKng" +
-//                    "PHigSVJzgJvVuuS7w1JD3aV5kD6LetU="));
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
+    public static void main(String[] args) throws NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
+        RSA rsa = new RSA();
+        rsa.createKey();
+        String hashcode = "e6dba466557a3fb4e54ea2bbe96d1ad7";
+        System.out.println(rsa.encrypt(hashcode));
 
     }
 }
