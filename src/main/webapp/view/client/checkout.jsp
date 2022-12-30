@@ -47,6 +47,7 @@
 							<label for="ghichu" class="title">Chữ ký số:</label>
 							<textarea name="signature" id="ghichu" rows="10"></textarea>
 						</div>
+						<span>Chưa có key? <a href='<c:url value="/view/client/createKey.jsp"></c:url>'>Ấn vào đây để đăng ký</a></span>
 					</div>
 				</div>
 				<div class="order-right">

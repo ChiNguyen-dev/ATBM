@@ -11,7 +11,7 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
 public class RSA {
-    KeyPair keypair;
+    public KeyPair keypair;
     public PublicKey publicKey;
     public PrivateKey privateKey;
 
@@ -19,8 +19,6 @@ public class RSA {
         KeyPairGenerator kg = KeyPairGenerator.getInstance("RSA");
         kg.initialize(1204);
         keypair = kg.generateKeyPair();
-        publicKey = keypair.getPublic();
-        privateKey = keypair.getPrivate();
     }
 
     public String encrypt(String text) throws NoSuchAlgorithmException, NoSuchPaddingException,
