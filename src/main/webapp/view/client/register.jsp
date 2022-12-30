@@ -45,7 +45,7 @@
 				  </div>
 				   <div class="sign-up__form-group">
 					   <lab class="sub-title" for="username">Public Key:</lab>
-					   <input  required="required" type="password" class="sign-up__input" name="p_key" placeholder="Nhập khóa công khai">
+					   <input  type="password" class="sign-up__input" name="p_key" placeholder="Nhập khóa công khai">
 				   </div>
 				  <button type="submit" class="btn btn-signin">Đăng ký</button>
 				  <div class="not-member">

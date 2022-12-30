@@ -22,4 +22,10 @@ public class UserServiceImp implements IUserService {
 		return dao.insert(username,pass,lastname,email,p_key);
 	}
 
+	@Override
+	public void updatePublicKey(String publicKey, String username) {
+		dao.updatePublicKey(publicKey, username);
+
+	}
+
 }
