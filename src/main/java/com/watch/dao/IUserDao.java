@@ -5,6 +5,5 @@ import com.watch.model.User;
 public interface IUserDao {
 	User getUser(String username,String password);
 	boolean insert(String username, String pass, String lastname,String email,String p_key);
-
-	void updatePublicKey(String publicKey, String username);
+	boolean updatekey(String key, String username);
 }

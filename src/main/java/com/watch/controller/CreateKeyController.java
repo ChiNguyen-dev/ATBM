@@ -1,7 +1,8 @@
 package com.watch.controller;
 
+import com.watch.dao.IUserDao;
+import com.watch.dao.Imp.UserDaoImp;
 import com.watch.model.User;
-import com.watch.services.IUserService;
 import com.watch.services.Imp.RSA;
 import com.watch.services.Imp.UserServiceImp;
 
@@ -15,8 +16,6 @@ import java.util.Base64;
 
 @WebServlet({"/create-key","/save-key"})
 public class CreateKeyController extends HttpServlet {
-   private IUserService uService;
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String url = request.getRequestURL().toString();
@@ -26,16 +25,7 @@ public class CreateKeyController extends HttpServlet {
             try {
                 rsa.createKey();
                 keyPair = rsa.keypair;
-                String publicKey = Base64.getEncoder().encodeToString(keyPair.getPublic().getEncoded());
-//                String privateKey = Base64.getEncoder().encodeToString(keyPair.getPrivate().getEncoded());
-//               update publicKey for user and send privateKey for user by email
-//                System.out.println(publicKey);
-//                uService = new UserServiceImp();
-//                HttpSession ss = request.getSession();
-//                User user = (User) ss.getAttribute("user");
-//                System.out.println(user.getUserName());
-//                uService.updatePublicKey(publicKey, user.getUserName());
-                request.setAttribute("publicKey", publicKey);
+                request.setAttribute("publicKey", Base64.getEncoder().encodeToString(keyPair.getPublic().getEncoded()));
                 request.getRequestDispatcher("/view/client/createKey.jsp").forward(request,response);
             } catch (NoSuchAlgorithmException e) {
                 request.setAttribute("publicKey", "");
@@ -48,11 +38,8 @@ public class CreateKeyController extends HttpServlet {
                     HttpSession ss = request.getSession();
                     User user = (User) ss.getAttribute("user");
                     user.setPubicKey(publicKey);
-                    System.out.println(user.getPubicKey());
-                    System.out.println(user.getUserName());
-                    uService = new UserServiceImp();
-                    uService.updatePublicKey(user.getPubicKey(), user.getUserName());
-
+                    IUserDao dao = new UserDaoImp();
+                    dao.updatekey(publicKey, user.getUserName());
 
                     request.getRequestDispatcher("/view/client/checkout.jsp").forward(request,response);
                 } else{
