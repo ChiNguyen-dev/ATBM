@@ -39,15 +39,13 @@ public class CreateKeyController extends HttpServlet {
                     User user = (User) ss.getAttribute("user");
                     user.setPubicKey(publicKey);
                     IUserDao dao = new UserDaoImp();
-                    dao.updatekey(publicKey, user.getUserName());
+                    dao.updatePublicKey(publicKey, user.getUserName());
 
                     request.getRequestDispatcher("/view/client/checkout.jsp").forward(request,response);
                 } else{
                     request.getRequestDispatcher("/view/client/createKey.jsp").forward(request,response);
                 }
         }
-
-
     }
 
     @Override

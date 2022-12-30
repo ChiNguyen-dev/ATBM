@@ -25,7 +25,6 @@ public class UserServiceImp implements IUserService {
 	@Override
 	public void updatePublicKey(String publicKey, String username) {
 		dao.updatePublicKey(publicKey, username);
-
 	}
 
 }
