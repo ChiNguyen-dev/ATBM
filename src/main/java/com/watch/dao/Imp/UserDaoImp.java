@@ -64,5 +64,19 @@ public class UserDaoImp implements IUserDao {
         return false;
     }
 
+    @Override
+    public void updatePublicKey(String publicKey, String username) {
+        String query = "UPDATE KhachHang SET pubicKey = ? where TaiKhoan = ?;";
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setString(1, publicKey);
+            ps.setString(2, username);
+            ps.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
 
 }
