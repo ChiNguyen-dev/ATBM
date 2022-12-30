@@ -67,6 +67,7 @@ public class Hash {
 		if (md == null)
 			return "";
 		if (new File(path).exists()) {
+			System.out.println("ok");
 			BufferedInputStream bis = new BufferedInputStream(new FileInputStream(path));
 			DigestInputStream dis = new DigestInputStream(bis, MessageDigest.getInstance(name));
 			int i = 0;
@@ -78,5 +79,10 @@ public class Hash {
 			return output.toString(16);
 		}
 		return "";
+	}
+
+	public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
+		Hash h = Hash.getInstance(Hash.MD5);
+		System.out.println(h.hashFile("C:\\Users\\admin\\Desktop\\ATBM\\src\\main\\java\\com\\watch\\services\\Imp\\mau-don-xin-xac-nhan-don-hang.pdf"));;
 	}
 }

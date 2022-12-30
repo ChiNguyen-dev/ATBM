@@ -4,5 +4,5 @@ import com.watch.model.User;
 
 public interface IUserService {
 	User login(String username, String password);
-	boolean register(String firstname, String lastname, String email, String password, String p_key);
+	boolean register(String username, String pass, String lastname, String email, String p_key);
 }

@@ -16,6 +16,8 @@ public class User {
     private String phoneNumber;
     private String address;
     private String city;
+
+    private String email;
     private int role;
 
 
@@ -25,7 +27,7 @@ public class User {
         // TODO Auto-generated constructor stub
     }
 
-    public User(String userName, String password, String firstName, String lastName, String phoneNumber, String address,
+    public User(String userName, String password, String firstName, String lastName, String email, String phoneNumber, String address,
                 String city, int role, String pubicKey) {
         super();
         this.userName = userName;
@@ -37,6 +39,7 @@ public class User {
         this.city = city;
         this.role = role;
         this.pubicKey = pubicKey;
+        this.email = email;
     }
 
     public String getUserName() {
@@ -118,6 +121,14 @@ public class User {
     }
     public String getPubicKey() {
         return pubicKey;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setPubicKey(String pubicKey) {

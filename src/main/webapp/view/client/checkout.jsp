@@ -26,10 +26,6 @@
 								<label for="ho" class="title">Họ Tên*</label> <input type="text"
 									id="ho" class="ho" name="hoten" required="required">
 							</div>
-							<div class="form-group-small">
-								<label for="email" class="title">Email*</label>
-								<input type="email" id="email" class="ten" name="email"  required="required">
-							</div>
 						</div>
 						<div class="order-form-group">
 							<label for="diachi" class="title">Địa chỉ*</label> <input

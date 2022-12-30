@@ -21,7 +21,7 @@ public class Email {
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("nguyendev2001@gmail.com", "ilmofrmdsikybtri");
+                return new PasswordAuthentication("nguyendev2001@gmail.com", "rlekwxxknpyczggh");
             }
         });
         Message message = new MimeMessage(session);
@@ -33,7 +33,7 @@ public class Email {
         MimeMultipart multipart = new MimeMultipart();
 
         MimeBodyPart attachment = new MimeBodyPart();
-        attachment.attachFile(new File("C:\\Users\\admin\\Downloads\\mau-don-xin-xac-nhan-don-hang.pdf"));
+        attachment.attachFile(new File("C:\\Users\\admin\\Desktop\\ATBM\\src\\main\\java\\com\\watch\\services\\Imp\\mau-don-xin-xac-nhan-don-hang.pdf"));
 
         MimeBodyPart messageBodyPart = new MimeBodyPart();
         messageBodyPart.setContent("<p>Mã xác nhận: <strong>" + IDFile + "</strong></p>","text/html");

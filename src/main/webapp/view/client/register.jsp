@@ -27,12 +27,12 @@
 				  </div>
 				  <div class="sign-up__form-group small">
 					<div class="sign-up__form-group">
-						<lab class="sub-title" for="username">Họ</lab>
-					  <input required="required" type="text" class="sign-up__input" name="firstname" placeholder="Nhập họ">
+						<lab class="sub-title" for="username">Họ và Tên</lab>
+					  <input required="required" type="text" class="sign-up__input" name="lastname" placeholder="Nhập họ">
 					</div>
 					<div class="sign-up__form-group">
-						<lab class="sub-title" for="username">Tên</lab>
-					  <input  required="required" type="text" class="sign-up__input" name="lastname" placeholder="Nhập tên">
+						<lab class="sub-title" for="username">Email</lab>
+					  <input  required="required" type="email" class="sign-up__input" name="email" placeholder="Nhập tên">
 					</div>
 				  </div>
 				  <div class="sign-up__form-group">
@@ -44,7 +44,7 @@
 					<input  required="required" type="password" class="sign-up__input" name="password" placeholder="Nhập mật khẩu">
 				  </div>
 				   <div class="sign-up__form-group">
-					   <lab class="sub-title" for="username">Khóa ID:</lab>
+					   <lab class="sub-title" for="username">Public Key:</lab>
 					   <input  required="required" type="password" class="sign-up__input" name="p_key" placeholder="Nhập khóa công khai">
 				   </div>
 				  <button type="submit" class="btn btn-signin">Đăng ký</button>

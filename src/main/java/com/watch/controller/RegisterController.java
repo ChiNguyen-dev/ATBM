@@ -25,11 +25,11 @@ public class RegisterController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String pass = request.getParameter("password");
-		String firstName = request.getParameter("firstname");
+		String email = request.getParameter("email");
 		String lastName = request.getParameter("lastname");
 		String p_key = request.getParameter("p_key");
 		uService = new UserServiceImp();
-		boolean isOk = uService.register(firstName, lastName, username, pass,p_key);
+		boolean isOk = uService.register(username, pass,lastName,email,p_key);
 		if (isOk) {
 			request.getRequestDispatcher("/home").forward(request, response);
 		} else {
