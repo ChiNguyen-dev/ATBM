@@ -65,8 +65,8 @@ public class UserDaoImp implements IUserDao {
     }
 
     @Override
-    public boolean updatekey(String key, String username) {
-        String query = "update khachhang set publicKey = ? where TaiKhoan = ?";
+    public boolean updatePublicKey(String key, String username) {
+        String query = "update khachhang set pubicKey = ? where TaiKhoan = ?";
         try {
             ps = conn.prepareStatement(query);
             ps.setString(1, key);
