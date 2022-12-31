@@ -1,185 +1,72 @@
 package com.Tool.view;
 
-import java.awt.Color;
-import java.awt.EventQueue;
+import java.security.InvalidKeyException;
+import java.security.KeyFactory;
+import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+public class RSA {
 
-import com.Tool.model.MD5;
 
-import javax.swing.JTextArea;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.awt.event.ActionEvent;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
+    public static String enscrypt(String plaintext, String privateKey)
+            throws NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException,
+            InvalidKeyException, InvalidKeySpecException {
 
-public class MD5ViewHashingFile extends JFrame {
+        PKCS8EncodedKeySpec spectPrivateKey = new PKCS8EncodedKeySpec(Base64.getDecoder().decode(privateKey), "RSA");
 
-    private JPanel contentPane;
-    private JTextArea textArea_Url;
-    private JButton bt_OpenFile;
-    private JTextArea textArea_Ketqua;
-    private JButton bt_Genergate;
-    private JMenuBar menuBar;
-    private JMenu menuMD5;
-    private JMenuItem mntmHashingString;
-    private JMenuItem mntmHashingfile;
-    private JMenu menuRSA;
-    private JMenuItem mntmRsa;
+        KeyFactory kf = KeyFactory.getInstance("RSA");
 
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    MD5ViewHashingFile frame = new MD5ViewHashingFile();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        PrivateKey pvt = kf.generatePrivate(spectPrivateKey);
+
+        Cipher cipher = Cipher.getInstance("RSA");
+
+        cipher.init(Cipher.ENCRYPT_MODE, pvt);
+
+        byte[] data = cipher.doFinal(plaintext.getBytes());
+
+        return Base64.getEncoder().encodeToString(data);
     }
 
-    /**
-     * Create the frame.
-     */
-    public MD5ViewHashingFile() {
-        setBackground(new Color(192, 192, 192));
-        setTitle("MD5-Hashing File");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 499, 371);
-        contentPane = new JPanel();
-        contentPane.setBackground(new Color(192, 192, 192));
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+    public static String descrypt(String plaintext , String publicKey) throws Exception {
 
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
+        X509EncodedKeySpec publickeySpec = new X509EncodedKeySpec(Base64.getDecoder().decode(publicKey), "RSA");
 
-        JPanel panel = new JPanel();
-        panel.setBackground(new Color(192, 192, 192));
-        panel.setBounds(10, 42, 461, 282);
-        contentPane.add(panel);
-        panel.setLayout(null);
+        KeyFactory kf = KeyFactory.getInstance("RSA");
 
-        textArea_Url = new JTextArea();
-        textArea_Url.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-        textArea_Url.setBounds(152, 10, 299, 66);
-        panel.add(textArea_Url);
+        PublicKey pub = kf.generatePublic(publickeySpec);
 
-        bt_Genergate = new JButton("GENERGATE >>");
-        bt_Genergate.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                do_bt_Genergate_actionPerformed(e);
-            }
-        });
-        bt_Genergate.setForeground(new Color(98, 157, 109));
-        bt_Genergate.setFont(new Font("Times New Roman", Font.BOLD, 14));
-        bt_Genergate.setBounds(37, 112, 141, 23);
-        panel.add(bt_Genergate);
+        Cipher cipher = Cipher.getInstance("RSA");
 
-        JLabel label_Ketqua = new JLabel("KẾT QUẢ");
-        label_Ketqua.setFont(new Font("Times New Roman", Font.BOLD, 13));
-        label_Ketqua.setBounds(37, 159, 84, 23);
-        panel.add(label_Ketqua);
+        cipher.init(Cipher.DECRYPT_MODE, pub);
 
-        textArea_Ketqua = new JTextArea();
-        textArea_Ketqua.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-        textArea_Ketqua.setBounds(152, 160, 299, 100);
-        panel.add(textArea_Ketqua);
+        byte[] data = cipher.doFinal(Base64.getDecoder().decode(plaintext.getBytes()));
 
-        bt_OpenFile = new JButton("OPEN FILE");
-        bt_OpenFile.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                do_bt_OpenFile_actionPerformed(e);
-            }
-        });
-        bt_OpenFile.setFont(new Font("Times New Roman", Font.BOLD, 13));
-        bt_OpenFile.setBounds(37, 29, 105, 21);
-        panel.add(bt_OpenFile);
-
-        menuBar = new JMenuBar();
-        menuBar.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-        menuBar.setBackground(new Color(75, 154, 180));
-        menuBar.setBounds(0, 0, 485, 22);
-        contentPane.add(menuBar);
-
-        menuMD5 = new JMenu("MD5");
-        menuMD5.setFont(new Font("Times New Roman", Font.BOLD, 13));
-        menuBar.add(menuMD5);
-
-        mntmHashingString = new JMenuItem("Hashing String");
-        mntmHashingString.setBackground(new Color(75, 154, 180));
-        mntmHashingString.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                do_mntmHashingString_actionPerformed(e);
-            }
-        });
-        mntmHashingString.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-        menuMD5.add(mntmHashingString);
-
-        mntmHashingfile = new JMenuItem("Hashing File");
-        mntmHashingfile.setBackground(new Color(75, 154, 180));
-        mntmHashingfile.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-        menuMD5.add(mntmHashingfile);
-
-        menuRSA = new JMenu("RSA");
-        menuRSA.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                do_menuRSA_actionPerformed(e);
-            }
-        });
-        menuRSA.setFont(new Font("Times New Roman", Font.BOLD, 13));
-        menuBar.add(menuRSA);
-
-        mntmRsa = new JMenuItem("RSA");
-        mntmRsa.setBackground(new Color(75, 154, 180));
-        mntmRsa.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                do_mntmRsa_actionPerformed(e);
-            }
-        });
-        mntmRsa.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-        menuRSA.add(mntmRsa);
+        return new String(data);
     }
-    protected void do_bt_OpenFile_actionPerformed(ActionEvent e) {
-        JFileChooser fileChooser = new JFileChooser();
-        int status = fileChooser.showOpenDialog(null);
-        if(status == fileChooser.APPROVE_OPTION) {
-            File file = fileChooser.getSelectedFile();
-            textArea_Url.setText(file.getAbsolutePath());
-        }
-    }
-    protected void do_bt_Genergate_actionPerformed(ActionEvent e) {
-        MD5 md5 = new MD5();
-        File file = new File(textArea_Url.getText());
-        String result = md5.getMD5(file);
-        textArea_Ketqua.setText(result);
 
+    public static void main(String[] args) throws Exception {
+        String signature = "vochinguyen";
+        String privateKey = "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAKmTZIJP8XXFCOfOfBgMKINLJUmTG"
+                + "fETUxaas3/C2kaQzrop6xZ7xYaplYevIc+Jqti0K21blwpW9joZDbxCxa9/8yRzf2rcjNhP1eqZeXivKY0CpEl37YLHytPUUHNFk5pUTgCyIfRCh48ohk201hRUvv5IVsY0wJPJwR3yF1mHAgMBAAECgYBXUdmYrLfGkB5k11PZQjF+YiyiNUhPdkb7xc+Wg2zIl3qMLFes7TEqhZrFEq6TYu2Bx0zxdA9TuLHz+sCy56NJQqtIm83DGJ2uN0IO6IDaVZqjwVQyDZX9YpstGXSEFdpJmxOAVirKcs4tp6WMsJqBS04ida67K7MulTWkYnoWGQJBAOtP5eV5JsVayTCZQsVAHQ8HNKUiDGuWvjjCpNYixtPo4+sCDhXU7kfyRubQfj2Lb5KTtyZTcXBNi40Su8l6aIsCQQC4e/xE1VKhPLQL8asIl09dAdB1Dj19ZfR1eoE0IchPyRsI9JfosIPLGydtKRMy7xVCGfA5GlkFECIYIXycEPZ1AkB8R11/PeZJM3Kw1TEbponyZvbaBEqVBC+BIOQYKJPkVcsSUqqHw0b5/q6Nty4FaUBLJPMFLerqyjnbDzrY5WqTAkEAqhSEauFQoJ3aT/ipee4lmNWHXaOXRPit+3DJlUpf5k69we/d7QRvPNz36"
+                + "EeqD5cjviEzuzFzSJurExwsSaXJ0QJBAITIAEm3RRnZjO4idOntuGKDB/BFPv2nBFlQUarR4iHiQDvZm/wqOZPQbOSdmsMYfd1kOQVWVFi+44Nz1PoeEvk=";
+
+        String publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCpk2SCT/F1xQjnznwYDCiDSyVJkxnxE1MWmrN/wtpGkM66KesWe8WGqZWHryHPiarYtCttW5cK"
+                + "VvY6GQ28QsWvf/Mkc39q3IzYT9XqmXl4rymNAqRJd+2Cx8rT1FBzRZOaVE4AsiH0QoePKIZNtNYUVL7+SFbGNMCTycEd8hdZhwIDAQAB";
+        String en = enscrypt(signature, privateKey);
+        String de = descrypt(en, publicKey);
+        System.out.println(en);
+        System.out.println(de);
     }
-    protected void do_mntmHashingString_actionPerformed(ActionEvent e) {
-        MD5ViewHashingString md5HashStr = new MD5ViewHashingString();
-        md5HashStr.setVisible(true);
-        this.setVisible(false);
-    }
-    protected void do_menuRSA_actionPerformed(ActionEvent e) {
-        RSAView rsaView = new RSAView();
-        rsaView.setVisible(true);
-        this.setVisible(false);
-    }
-    protected void do_mntmRsa_actionPerformed(ActionEvent e) {
-        RSAView rsaView = new RSAView();
-        rsaView.setVisible(true);
-        this.setVisible(false);
-    }
+
+
+
 }

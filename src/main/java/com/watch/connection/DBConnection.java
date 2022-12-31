@@ -4,7 +4,7 @@ import java.sql.DriverManager;
 
 public class DBConnection {
 	private static String USERNAME = "sa";
-	private static String PASSWORD = "123456";
+	private static String PASSWORD = "123";
 	private static String URL = "jdbc:sqlserver://localhost;database=projectLTW;";
 	
 	public static Connection getConnection() {
