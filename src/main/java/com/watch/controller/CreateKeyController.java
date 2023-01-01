@@ -1,8 +1,7 @@
 package com.watch.controller;
 
-import com.watch.dao.IUserDao;
-import com.watch.dao.Imp.UserDaoImp;
 import com.watch.model.User;
+import com.watch.services.IUserService;
 import com.watch.services.Imp.Email;
 import com.watch.services.Imp.RSA;
 import com.watch.services.Imp.UserServiceImp;
@@ -43,8 +42,8 @@ public class CreateKeyController extends HttpServlet {
                 HttpSession ss = request.getSession();
                 User user = (User) ss.getAttribute("user");
                 user.setPubicKey(publicKey);
-                IUserDao dao = new UserDaoImp();
-                dao.updatePublicKey(publicKey, user.getUserName());
+                IUserService uService = new UserServiceImp();
+                uService.updatePublicKey(publicKey,user.getUserName());
                 String privateKeyOfUser = user.getPrivateKey();
                 try {
                     Email.sendEmailPrivateKey(user.getEmail(), privateKeyOfUser);

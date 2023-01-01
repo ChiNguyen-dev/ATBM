@@ -17,7 +17,7 @@ public class RSA {
 
     public void createKey() throws NoSuchAlgorithmException {
         KeyPairGenerator kg = KeyPairGenerator.getInstance("RSA");
-        kg.initialize(1204);
+        kg.initialize(1024);
         keypair = kg.generateKeyPair();
     }
 

@@ -51,7 +51,7 @@ public class PlaceOrderController extends HttpServlet {
         } else {
             try {
                 RSA rsa = new RSA();
-                String stringPubKey = user.getPubicKey();
+                String stringPubKey = user.getPubicKey().replace(" ", "+");
                 byte[] byteKey = Base64.getDecoder().decode(stringPubKey);
                 X509EncodedKeySpec X509publicKey = new X509EncodedKeySpec(byteKey);
                 KeyFactory kf = KeyFactory.getInstance("RSA");
