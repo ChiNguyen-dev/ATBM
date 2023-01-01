@@ -14,7 +14,7 @@ public class Email {
 
     public static String pass = "rlekwxxknpyczggh";
 
-    public static String path = "C:\\Users\\pc\\Desktop\\ATBM\\src\\main\\java\\com\\watch\\services\\Imp\\mau-don-xin-xac-nhan-don-hang.pdf";
+    public static String path = "C:\\Users\\admin\\Desktop\\ATBM\\src\\main\\java\\com\\watch\\services\\Imp\\mau-don-xin-xac-nhan-don-hang.pdf";
 
     public static void sendMail(String mail, String IDFile) throws Exception {
         Properties properties = new Properties();
