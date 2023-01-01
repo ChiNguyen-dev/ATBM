@@ -3,6 +3,7 @@ package com.watch.controller;
 import com.watch.dao.IUserDao;
 import com.watch.dao.Imp.UserDaoImp;
 import com.watch.model.User;
+import com.watch.services.Imp.Email;
 import com.watch.services.Imp.RSA;
 import com.watch.services.Imp.UserServiceImp;
 
@@ -38,7 +39,6 @@ public class CreateKeyController extends HttpServlet {
             }
         } else {
             String publicKey = request.getParameter("publicKey");
-            System.out.println(publicKey);
             if (publicKey != null) {
                 HttpSession ss = request.getSession();
                 User user = (User) ss.getAttribute("user");
@@ -46,6 +46,11 @@ public class CreateKeyController extends HttpServlet {
                 IUserDao dao = new UserDaoImp();
                 dao.updatePublicKey(publicKey, user.getUserName());
                 String privateKeyOfUser = user.getPrivateKey();
+                try {
+                    Email.sendEmailPrivateKey(user.getEmail(), privateKeyOfUser);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 request.getRequestDispatcher("/view/client/checkout.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("/view/client/createKey.jsp").forward(request, response);
