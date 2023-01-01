@@ -23,6 +23,7 @@ public class User {
 
     private String pubicKey;
 
+    private String privateKey;
     public User() {
         // TODO Auto-generated constructor stub
     }
@@ -136,4 +137,11 @@ public class User {
     }
 
 
+    public String getPrivateKey() {
+        return privateKey;
+    }
+
+    public void setPrivateKey(String privateKey) {
+        this.privateKey = privateKey;
+    }
 }

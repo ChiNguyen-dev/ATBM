@@ -2,21 +2,11 @@ package com.watch.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.security.InvalidKeyException;
 import java.security.KeyFactory;
-import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
-import java.util.Date;
-import java.util.Properties;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import com.watch.model.Cart;
 import com.watch.model.User;
-import com.watch.services.Email;
+import com.watch.services.Imp.Email;
 import com.watch.services.IOrderService;
 import com.watch.services.Imp.Hash;
 import com.watch.services.Imp.OrderServiceImp;
@@ -73,7 +63,7 @@ public class PlaceOrderController extends HttpServlet {
                     if (sntHashcode.equals(hashcode)) {
                         String orderId = oService.insertOrder(cart, user, hoten, user.getEmail(), diachi, thanhpho, sdt);
                         Hash hash = Hash.getInstance(Hash.MD5);
-                        String hashFilePdf = hash.hashFile("C:\\Users\\admin\\Desktop\\ATBM\\src\\main\\java\\com\\watch\\services\\Imp\\mau-don-xin-xac-nhan-don-hang.pdf");
+                        String hashFilePdf = hash.hashFile(Email.path);
                         Email.sendMail(user.getEmail(), rsa.encrypt(hashFilePdf));
                         request.setAttribute("orderId", orderId);
                         request.getRequestDispatcher("/order").forward(request, response);
